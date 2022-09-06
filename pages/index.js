@@ -20,6 +20,9 @@ export default function Home({ jobs }) {
         <Header className="nav" height={60} p="xs">
           {/* Header content */}
           <Title className="navTitle">Job Seeker</Title>
+          <span>
+            <i className="bi bi-star"></i>
+          </span>
         </Header>
       }
     >
