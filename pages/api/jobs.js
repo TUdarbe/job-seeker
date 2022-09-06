@@ -23,11 +23,28 @@ export default async function jobHandler(req, res) {
     case "POST":
       try {
         const job = await db.collection("Jobs").insertOne(data);
-        console.log("success");
+        res.status(200).json({success: true, data: job})
       } catch (err) {
-        console.log("error");
+        res.status(400).json({ success: false, error: err });
       }
       break;
+
+    case "DELETE":
+      try{
+          const id = query {id: data.id}
+          const deleteJob = await
+
+      }catch(err){
+        res.status(400).json({ success: false, error: err });
+      }
+      break;
+
+    case "PUT":
+      try{
+
+      }catch(err){
+
+      }
     default:
       console.log("error");
       break;
