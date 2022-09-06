@@ -24,3 +24,10 @@ a {
     background: black;
   }
 }
+.nav {
+  background: black;
+}
+
+.navTitle {
+  color: white;
+}
