@@ -2,6 +2,17 @@ import { AppShell, Header, Table, Title, Button } from "@mantine/core";
 import { useState } from "react";
 
 export default function JobTabel({ jobs }) {
+  const deleteJob = async (id) => {
+    try {
+      const res = await fetch("../api/jobs", {
+        method: "DELETE",
+        body: id,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Table>
       <thead>
@@ -25,7 +36,7 @@ export default function JobTabel({ jobs }) {
               </span>
             </td>
             <td>
-              <i className="bi bi-trash"></i>
+              <i onClick={() => deleteJob(j._id)} className="bi bi-trash"></i>
             </td>
             <td>{j.position} </td>
             <td>{j.company} </td>
