@@ -6,6 +6,7 @@ import { connectToDatabase } from "../util/mongodb";
 
 import { useState } from "react";
 import NewJobModal from "../components/NewJobModal";
+import JobTabel from "../components/JobTabel";
 
 export default function Home({ jobs }) {
   const [open, setOpen] = useState(false);
@@ -20,47 +21,13 @@ export default function Home({ jobs }) {
         <Header className="nav" height={60} p="xs">
           {/* Header content */}
           <Title className="navTitle">Job Seeker</Title>
-          <span>
-            <i className="bi bi-star"></i>
-          </span>
         </Header>
       }
     >
       <Button onClick={handleOpen}>New Job</Button>
-      <Table>
-        <thead>
-          <tr>
-            <th></th>
-            <th></th>
-            <th>Position</th>
-            <th>Company</th>
-            <th>Description/Tech-Stack</th>
-            <th>Status</th>
-            <th>Apply Date</th>
-            <th>Link</th>
-          </tr>
-        </thead>
-        <tbody>
-          {jobs.map((j) => (
-            <tr key={j._id}>
-              <td>
-                <span>
-                  <i className="bi bi-star"></i>
-                </span>
-              </td>
-              <td>
-                <i className="bi bi-trash"></i>
-              </td>
-              <td>{j.position} </td>
-              <td>{j.company} </td>
-              <td>{j.techstack.toString().toUpperCase()}</td>
-              <td>{j.status}</td>
-              <td>{j.appliedDate}</td>
-              <td>{j.link}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
+
+      <JobTabel jobs={jobs}></JobTabel>
+
       <NewJobModal open={open} onClose={() => setOpen(false)}></NewJobModal>
     </AppShell>
   );
