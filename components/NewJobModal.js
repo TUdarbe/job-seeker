@@ -17,7 +17,6 @@ export default function NewJobModal(props) {
   });
 
   const postData = async (values) => {
-    console.log(values);
     values.techstack = values.techstack.split();
     values.status = "Applied";
     values.appliedDate = new Date().toLocaleDateString();
@@ -31,13 +30,19 @@ export default function NewJobModal(props) {
         },
         body: JSON.stringify(values),
       });
+      console.log(res);
       form.reset();
     } catch (error) {}
   };
 
   return (
     <>
-      <Modal opened={open} onClose={onClose} title="Insert New">
+      <Modal
+        onSubmit={onSubmit}
+        opened={open}
+        onClose={onClose}
+        title="Insert New"
+      >
         {/* Modal content */}
         <Box>
           <form onSubmit={form.onSubmit((values) => postData(values))}>
